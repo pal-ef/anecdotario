@@ -1,0 +1,40 @@
+.overflow {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.overflow-oneline {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+body {
+  background-color:#ECF0F1;
+}
+
+.anec {
+  color: #2C3E50;
+  
+  text-decoration:none;
+  transition: all .2s;
+}
+.anec:hover{
+  border-color: blueviolet;
+  text-decoration:none;
+}
+
+/* ADITIONAL styles */
+
+::-moz-selection { /* Code for Firefox */
+  color: #FFF;
+  background: #2C3E50;
+}
+
+::selection {
+  color: #FFF;
+  background: #2C3E50;
+}

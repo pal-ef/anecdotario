@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card p-2">
+            <div class="card-body">
+                <h2>Registro de usuario</h2>
+                <hr>
+                <form action="/usuario/registro" enctype="multipart/form-data" spellcheck="false" method="POST">
+                    <div class="form-group">
+                        <label for="username">Nombre de usuario</label>
+                        <input type="text" class="form-control" name="name" value="{{name}}" placeholder="Un nombre único" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Correo Eléctronico</label>
+                        <input type="email" name="email" class="form-control" aria-describedby="emailHelp" value="{{email}}" placeholder="correo@email.com">
+                        <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Confirma tu contraseña</label>
+                        <input type="password" name="confirm_password" class="form-control">
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        Tu imagen de perfil tiene que ser menor a <span class="alert-link">5MB</span>. Tipo jpg, png, gif.
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile01"
+                                aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Subir imagen</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Una pequeña introducción</label>
+                        <input type="text" class="form-control" name="description" value="{{description}}" placeholder="Soy fulanito de tal">
+                    </div>
+                    <button type="submit" class="btn btn-secondary btn-block">Registrar usuario nuevo</button>
+                    <script>
+                        $('#inputGroupFile01').on('change', function () {
+                            //get the file name
+                            var fileName = $(this).val();
+                            var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+                            //replace the "Choose a file" label
+                            $(this).next('.custom-file-label').html(cleanFileName);
+                        })
+                    </script>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

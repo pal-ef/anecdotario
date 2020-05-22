@@ -1,0 +1,19 @@
+<div class="navbar mb-3 w-100">
+    <form action="/busqueda" method="GET" class="form-inline">
+        <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+<div class="card-columns w-100">
+    {{#each notes}}
+    <a href="/anecdotas/{{_id}}" class="anec">
+        <div class="card">
+            <img src="/user/img/{{imageid}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-truncate">{{title}}</h5>
+                <p class="card-text overflow">{{description}}</p>
+            </div>
+        </div>
+    </a>
+    {{/each}}
+</div>

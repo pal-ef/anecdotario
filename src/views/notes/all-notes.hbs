@@ -1,0 +1,43 @@
+<form action="/anecdotas" method="POST">
+    <div class="form-row align-items-center">
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="text" name="search" value="{{texto}}" class="form-control" id="inlineFormInputGroup" placeholder="Usuario">
+            </div>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-secondary mb-2">Buscar</button>
+        </div>
+    </div>
+</form>
+<hr>
+<div class="card-columns w-100">
+    {{#each notas}}
+    <a href="/anecdotas/{{_id}}" class="anec">
+        <div class="card">
+            <img src="/user/img/{{imageid}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-truncate">{{title}}</h5>
+                <p class="card-text overflow">{{description}}</p>
+            </div>
+        </div>
+    </a>
+    {{/each}}
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="/anecdotas?page=1&limit=12">Más recientes</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="/anecdotas?page=1&limit=12">1</a></li>
+        <li class="page-item"><a class="page-link" href="/anecdotas?page=2&limit=12">2</a></li>
+        <li class="page-item"><a class="page-link" href="/anecdotas?page=3&limit=12">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="/anecdotas?page=4&limit=200">Mas antiguos</a>
+        </li>
+    </ul>
+</nav>

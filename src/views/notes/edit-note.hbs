@@ -1,0 +1,33 @@
+<div class="col-md-10 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Editar Anécdota</h3>
+        </div>
+        <div class="card-body">
+            <form autocomplete="off" spellcheck="false" action="/anecdotas/editar/{{note._id}}?_method=PUT" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    <input name="title" class="form-control" type="text" value="{{note.title}}">
+                </div>
+                <div class="form-group">
+                    <textarea  name="description" class="form-control" rows="15">{{note.description}}</textarea>
+                </div>
+                <div class="form-group mb-3">
+                    <p>El cambio de imagen no está disponible</p>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block"  type="submit">Guardar cambios</button>
+                </div>
+                <script>
+                    $('#inputGroupFile01').on('change', function () {
+                        //get the file name
+                        var fileName = $(this).val();
+                        var cleanFileName = fileName.replace('C:\\fakepath\\', " ");
+                        //replace the "Choose a file" label
+                        $(this).next('.custom-file-label').html(cleanFileName);
+                    })
+                </script>
+            </form>
+        </div>
+    </div>
+</div>

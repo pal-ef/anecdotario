@@ -1,0 +1,58 @@
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-3">
+            <img src="/user/img/{{pic}}" class="card-img h-100">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Nombre de usuario: {{user}}</h5>
+                <p class="card-text">{{description}}</p>
+                <p class="card-text"><small class="text-muted">Usuario desde {{joined}}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card text-center">
+    <nav class="m-3">
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+                aria-controls="nav-home" aria-selected="true">Anecdotas</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                aria-controls="nav-profile" aria-selected="false">Perfil</a>
+        </div>
+    </nav>
+    <div class="card-body">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="row row-cols-1 row-cols-md-3">
+                    
+                    {{#each notes}}
+                    
+                    <div class="col mb-4">
+                        <div class="card">
+                            <img src="/user/img/{{imageid}}" class="card-img-top" alt="...">
+                            <div class="card-body text-left">
+                                <h5 class="card-title overflow-oneline">{{title}}</h5>
+                                <p class="card-text overflow">{{description}}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/anecdotas/editar/{{_id}}">
+                                    <button class="btn btn-sm btn-secondary mb-1 btn-block">Editar</button>
+                                </a>
+                                <form action="/anecdotas/borrar/{{_id}}?_method=DELETE" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-warning btn-block btn-sm">Borrar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {{/each}}
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <h1>{{user}}</h1>
+            </div>
+    </div>
+</div>

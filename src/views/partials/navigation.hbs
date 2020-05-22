@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/"><i class="fas fa-theater-masks"></i>Anecdotario</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"><i class="fas fa-home"></i>  Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/anecdotas?page=1&limit=12"><i class="fab fa-leanpub"></i>   Descubrir</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {{#if user}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-book-reader"></i> Mi Anecdotario
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/usuario/personal">  Ver mis anécdotas</a>
+                        <a class="dropdown-item" href="/anecdotas/nueva">  Agregar anécdota</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/usuario/salir"><i class="fas fa-door-closed"></i>  Cerrar sesión</a>
+                    </div>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuario/acceder" tabindex="-1" aria-disabled="true"><i class="fas fa-door-open"></i>   Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/usuario/registro" tabindex="-1" aria-disabled="true"><i class="fas fa-person-booth"></i> Registrarse</a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

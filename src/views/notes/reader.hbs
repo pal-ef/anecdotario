@@ -19,16 +19,16 @@
         <div class="card w-100">
             <div class="col-sm">
                 <div class="card-body text-center">
-                    <h1>{{note.title}} <a href="/like/{{note._id}}"> <span class="badge badge-secondary"><i class="fas fa-heart"></i> {{note.likes}}</span> </a></h1>
+                    <h2>{{note.title}} <a href="/like/{{note._id}}"> <span class="badge badge-secondary"><i class="fas fa-heart"></i> {{note.likes}}</span> </a></h2>
                 </div>
             </div>
             
             <img src="/user/img/{{note.imageid}}" class="card-img-top" alt="...">
             <div class="card-body">
                 
-                <h3 class="card-text">
+                <p class="card-text">
                     {{{text}}}
-                </h3>
+                </p>
             </div>
         </div>
     </div>

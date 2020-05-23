@@ -38,3 +38,9 @@ body {
   color: #FFF;
   background: #2C3E50;
 }
+
+.withstyle {
+  width: 100%;
+  background-color: #373A3C;
+  padding:20px;
+}

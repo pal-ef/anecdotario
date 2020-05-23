@@ -1,36 +1,32 @@
-<div class="container">
-    <div class="row mb-5">
-        <div class="card w-100">
-            <div class="row no-gutters">
-                <div class="col-md-3">
-                    <img src="/user/img/{{note.userimg}}" class="card-img h-100" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body text-center">
-                        <h2 class="card-title">Anecdota de @{{note.username}}</h2>
-                        <p class="card-text"><small class="text-muted">Públicado el {{joined}}</small><br><small class="text-muted">Ultima edición el {{updated}}</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="card w-100">
-            <div class="col-sm">
-                <div class="card-body text-center">
-                    <h2>{{note.title}} <a href="/like/{{note._id}}"> <span class="badge badge-secondary"><i class="fas fa-heart"></i> {{note.likes}}</span> </a></h2>
-                </div>
+<div class="row mb-5">
+    <div class="card w-100">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <img src="/user/img/{{note.userimg}}" class="card-img h-100" alt="...">
             </div>
-            
-            <img src="/user/img/{{note.imageid}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                
-                <p class="card-text">
-                    {{{text}}}
-                </p>
+            <div class="col-md-8">
+                <div class="card-body text-center">
+                    <h2 class="card-title">Anécdota de @{{note.username}}</h2>
+                    <p class="card-text"><small class="text-muted">Públicado el {{joined}}</small><br><small class="text-muted">Ultima edición el {{updated}}</small></p>
+                </div>
             </div>
         </div>
     </div>
-    
+</div>
+
+<div class="row">
+    <div class="card">
+            <div class="card-body text-center">
+                <h2>{{note.title}} <a href="/like/{{note._id}}"> <span class="badge badge-secondary"><i class="fas fa-heart"></i> {{note.likes}}</span> </a></h2>
+            </div>
+        
+        <img src="/user/img/{{note.imageid}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            
+            <p class="card-text">
+                {{{text}}}
+            </p>
+        </div>
+    </div>
 </div>

@@ -2,15 +2,19 @@
     <div class="form-row align-items-center">
         <div class="col-auto">
             <label class="sr-only" for="inlineFormInputGroup">Username</label>
-            <div class="input-group mb-2">
+            <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">@</div>
                 </div>
-                <input type="text" name="search" value="{{texto}}" class="form-control" id="inlineFormInputGroup" placeholder="Usuario">
+                <input type="text" name="search" value="{{texto}}" class="form-control proper" id="inlineFormInputGroup" placeholder="Usuario">
+                <a onclick="this.closest('form').submit(); return false;">
+                    <div class="input-group-prepend h-100">
+                        <div class="input-group-text proper">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </a>
             </div>
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-secondary mb-2">Buscar</button>
         </div>
     </div>
 </form>

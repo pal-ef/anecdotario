@@ -48,3 +48,7 @@ body {
 .principal {
   min-height: 87vh;
 }
+
+.proper {
+  border-left:none;
+}

@@ -16,6 +16,21 @@
                 </a>
             </div>
         </div>
+        {{#if texto}}
+        {{#if notas}}
+        <div class="col-auto d-block">
+            
+            <h4 class="text-right"> Anécdotas de {{texto}}</h4>
+            
+        </div>
+        {{else}}
+        <div class="col-auto d-block">
+        
+            <h4 class="text-right"> No encontramos ese Usuario.</h4>
+        
+        </div>
+        {{/if}}
+        {{/if}}
     </div>
 </form>
 <hr>

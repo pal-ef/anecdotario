@@ -111,12 +111,10 @@ notesCtrl.like = async(req, res) => {
 
 // Search
 notesCtrl.search = async(req, res) => {
-    busqueda = {
-        username: req.body.search
-    }
+    busqueda = req.body.search
     texto = req.body.search
     console.log(req.body.search)
-    const notas = await Note.find(busqueda).lean().sort({createdAt: 'desc'});
+    const notas = await Note.find( { "username" : { $regex: new RegExp(busqueda, "i") } }).lean().sort({createdAt: 'desc'});
     console.log(notas)
     res.render('notes/all-notes', {notas, texto});
 }

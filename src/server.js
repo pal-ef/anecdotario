@@ -61,13 +61,15 @@ app.use(multer({
     }
 }).single('image'));
 
+
 // Global Variables
 app.use((req, res, next) =>{
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
     res.locals.user = req.user || null;
-    next();
+    next()
 });
+
 
 // Routes
 app.use(require('./routes/index.routes'));

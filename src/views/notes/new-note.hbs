@@ -1,4 +1,7 @@
-<div class="col-md-8 mx-auto">
+<div class="alert alert-secondary" role="alert">
+    Anécdotario aún no soporta el cambio de imágenes. <span class="alert-link">La imagen no podrá ser editada.</span>
+</div>
+
     <div class="card text-center">
         <div class="card-header">
             <h3>Nueva anécdota</h3>
@@ -10,6 +13,9 @@
                 </div>
                 <div class="form-group">
                     <textarea class="form-control" name="description" rows="15" placeholder="Contenido"></textarea>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    La imagen tiene que ser menor a <span class="alert-link">5MB</span>. (JPG, PNG, GIF)
                 </div>
                 <div class="input-group mb-3">
                     <div class="custom-file">
@@ -32,4 +38,3 @@
             </form>
         </div>
     </div>
-</div>

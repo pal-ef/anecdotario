@@ -14,8 +14,13 @@ let transporter = nodemailer.createTransport({
     }
 });
 */
-var transport = nodemailer.createTransport("SMTP", {
-    service: "hotmail",
+var transporter = nodemailer.createTransport({
+    host: "smtp-mail.outlook.com", // hostname
+    secureConnection: false, // TLS requires secureConnection to be false
+    port: 587, // port for secure SMTP
+    tls: {
+        ciphers: 'SSLv3'
+    },
     auth: {
         user: process.env.EMAIL,
         pass: process.env.EPASS

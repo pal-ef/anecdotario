@@ -305,6 +305,10 @@ notesCtrl.report = async (req, res) => {
     await transporter.sendMail(mailOptions, function (err, data) {
         if (err) {
             console.log("EMAIL ERROR")
+            console.log(err)
+            console.log(data)
+            req.flash('error', 'Hubo un error al reportar. Vuelve a intentarlo más tarde')
+            res.redirect('/anecdotas/' + req.params.id)
         } else {
             console.log("EMAIL SENT SUCCESSFULLY")
             req.flash('success', 'Gracias por ayudar a Anécdotario')

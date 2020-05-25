@@ -3,6 +3,14 @@ const Note = require('../models/Note');
 const path = require('path');
 const fs = require('fs');
 const exphbs = require('handlebars')
+const nodemailer = require('nodemailer')
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EPASS
+    }
+});
 
 notesCtrl.renderNoteForm = (req, res) =>{
     res.render('notes/new-note');
@@ -284,6 +292,27 @@ notesCtrl.search = async(req, res) => {
     console.log(notas)
     res.render('notes/all-notes', {notas, texto});
 }
+
+// REPORT
+notesCtrl.report = async (req, res) => {
+    let mailOptions = {
+        from: 'Anecdotario.org',
+        to: 'soft.pal.ef@gmail.com',
+        subject: 'REPORTE DE USUARIO',
+        text: 'Reportaron la anécdota con ID: '+req.params.id+"\n------------------------------------\n"+"\nMensaje: \n"+req.body.msn
+    }
+
+    await transporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+            console.log("EMAIL ERROR")
+        } else {
+            console.log("EMAIL SENT SUCCESSFULLY")
+            req.flash('success', 'Gracias por ayudar a Anécdotario')
+            res.redirect('/anecdotas/'+req.params.id)
+        }
+
+    })
+} 
 
 module.exports = notesCtrl;
 

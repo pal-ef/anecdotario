@@ -14,6 +14,7 @@ const {
     funny,
     sad,
     love,
+    report,
     search
 } = require('../controllers/notes.controller')
 
@@ -48,7 +49,25 @@ router.get('/love/:id', isAuthenticated, love)
 // ELIMINAR ANECDOTA
 router.delete('/anecdotas/borrar/:id', isAuthenticated, deleteNote);
 
-// Busqueda
+// REPORT
+router.post('/report/:id', isAuthenticated, report)
+
+/*
+let mailOptions = {
+    from: 'soporte@anecdotario.org',
+    to: 'soft.pal.ef@gmail.com',
+    subject: 'Reporte de usuario',
+    text: 'REPORTE NUEVO'
+}
+
+transporter.sendMail(mailOptions, function (err, data) {
+    if (err) {
+        console.log("EMAIL ERRO")
+    } else {
+        console.log("EMAIL SENT SUCCESSFULLY")
+    }
+
+})*/
 
 
 module.exports = router;

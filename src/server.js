@@ -8,6 +8,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const uuid = require('uuid');
+const nodemailer = require('nodemailer')
 
 // Initializations
 const storage = multer.diskStorage({
@@ -18,6 +19,13 @@ const storage = multer.diskStorage({
 });
 const app = express();
 require('./config/passport');
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EPASS
+    }
+});
 
 // Settings
 app.set('port', process.env.PORT || 5000);

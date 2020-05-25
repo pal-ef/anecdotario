@@ -311,8 +311,8 @@ notesCtrl.search = async(req, res) => {
 // REPORT
 notesCtrl.report = async (req, res) => {
     let mailOptions = {
-        from: 'Anecdotario.org',
-        to: 'soft.pal.ef@gmail.com',
+        from: '"Anecdotario" <soporte-anecdotario@hotmail.com>', // sender address (who sends)
+        to: 'soft.pal.ef@gmail.com', // list of receivers (who receives)
         subject: 'REPORTE DE USUARIO',
         text: 'Reportaron la anécdota con ID: '+req.params.id+"\n------------------------------------\n"+"\nMensaje: \n"+req.body.msn
     }
@@ -321,8 +321,6 @@ notesCtrl.report = async (req, res) => {
         if (err) {
             console.log("EMAIL ERROR")
             console.log(err)
-            console.log(process.env.EMAIL)
-            console.log(process.env.EPASS)
             req.flash('error', 'Hubo un error al reportar. Vuelve a intentarlo más tarde')
             res.redirect('/anecdotas/' + req.params.id)
         } else {

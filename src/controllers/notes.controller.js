@@ -15,9 +15,12 @@ let transporter = nodemailer.createTransport({
 });
 */
 var transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // use SSL
+    host: "smtp-mail.outlook.com", // hostname
+    secureConnection: false, // TLS requires secureConnection to be false
+    port: 587, // port for secure SMTP
+    tls: {
+        ciphers: 'SSLv3'
+    },
     auth: {
         user: process.env.EMAIL,
         pass: process.env.EPASS
@@ -318,7 +321,8 @@ notesCtrl.report = async (req, res) => {
         if (err) {
             console.log("EMAIL ERROR")
             console.log(err)
-            console.log(data)
+            console.log(process.env.EMAIL)
+            console.log(process.env.EPASS)
             req.flash('error', 'Hubo un error al reportar. Vuelve a intentarlo más tarde')
             res.redirect('/anecdotas/' + req.params.id)
         } else {

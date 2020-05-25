@@ -21,13 +21,9 @@ const NoteSchema = new Schema({
         type: String,
         required: true,
     },
-    likes: {
-        type: Number,
-        required: true
-    },
-    usersliked: {
+    reactions: {
         type: Array,
-        required: true
+        required: false,
     },
     userimg: {
         type: String,

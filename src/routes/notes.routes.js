@@ -10,6 +10,10 @@ const {
     updateNote, 
     deleteNote,
     like,
+    angry,
+    funny,
+    sad,
+    love,
     search
 } = require('../controllers/notes.controller')
 
@@ -34,8 +38,12 @@ router.put('/anecdotas/editar/:id', isAuthenticated, updateNote);
 // LEER ANECDOTA
 router.get('/anecdotas/:id', renderReader);
 
-// Like
+// REACTIONS
 router.get('/like/:id', isAuthenticated, like)
+router.get('/angry/:id', isAuthenticated, angry)
+router.get('/funny/:id', isAuthenticated, funny)
+router.get('/sad/:id', isAuthenticated, sad)
+router.get('/love/:id', isAuthenticated, love)
 
 // ELIMINAR ANECDOTA
 router.delete('/anecdotas/borrar/:id', isAuthenticated, deleteNote);

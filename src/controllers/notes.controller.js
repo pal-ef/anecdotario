@@ -15,8 +15,7 @@ notesCtrl.createNewNote = async (req, res) => {
     newNote.username = req.user.name;
     newNote.userimg = req.user.profilepic;
     newNote.imageid = req.file.filename;
-    newNote.likes = 0;
-    newNote.usersliked = [];
+    newNote.reactions = []
     await newNote.save();
     req.flash('success', '¡Tu anécdota ha sido públicada!');
     res.redirect('/anecdotas?page=1&limit=12');
@@ -55,7 +54,28 @@ notesCtrl.renderReader = async (req, res) => {
     const bjoined = note.updatedAt;
     const joined = ajoined.getDate() + "/" + (ajoined.getMonth() + 1) + "/" + ajoined.getFullYear();
     const updated = bjoined.getDate() + "/" + (bjoined.getMonth() + 1) + "/" + bjoined.getFullYear();
-    res.render('notes/reader', {note, text, joined, updated})
+
+    // REACTIONS
+    reactions = note.reactions
+    likes = 0
+    angries = 0
+    funnies = 0
+    sadness = 0
+    lovely = 0
+    reactions.forEach(element => {
+        if (element.includes("like")){
+            likes = likes + 1;
+        } else if (element.includes("angry")) {
+            angries = angries + 1;
+        } else if (element.includes("funny")) {
+            funnies = funnies + 1;
+        } else if (element.includes("sad")) {
+            sadness = sadness + 1;
+        } else if (element.includes("love")) {
+            lovely = lovely + 1;
+        }
+    });
+    res.render('notes/reader', {note, text, joined, updated, angries, likes, funnies, sadness, lovely})
 }
 
 notesCtrl.renderEditForm = async (req, res) => {
@@ -91,22 +111,168 @@ notesCtrl.deleteNote = async (req, res) => {
     res.redirect('/anecdotas');
 };
 
-// LIKES
-notesCtrl.like = async(req, res) => {
-    
+//          //
+// REACTIONS//
+//          //
+
+notesCtrl.like = async (req, res) => {
+    change = false
     const note = await Note.findById(req.params.id).lean();
-    const newlikes = note.likes + 1;
-    const user = note.usersliked;
-    if (user.includes(req.user.id)) {
-        req.flash('error', 'Ya indicaste que te gusta esta anécdota'); 
-        res.redirect('/anecdotas/' + req.params.id)
+    reactions = note.reactions;
+    iteration = -1
+    reactions.forEach(element => {
+        iteration += 1
+        if (element.includes(req.user.id)) {
+            change = true
+            index = iteration
+        }
+        else {
+            change = false
+        }
+    });
+    if (change) {
+        if (reactions[iteration].includes("like")) {
+            reactions.splice(iteration, 1)
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        } else {
+        reactions[iteration] = [req.user.id, "like"]
+        await Note.findByIdAndUpdate(req.params.id, { reactions });
+        res.redirect('/anecdotas/' + req.params.id);
+        }
     } else {
-        user.push(req.user.id);
-        req.flash('success', 'Indicaste que te gusta esta anécdota');
-        await Note.findByIdAndUpdate(req.params.id, { likes: newlikes, usersliked: user });
+        reactions.push([req.user.id, "like"]);
+        await Note.findByIdAndUpdate(req.params.id, { reactions });
         res.redirect('/anecdotas/' + req.params.id);
     }
-    
+}
+
+notesCtrl.angry = async (req, res) => {
+    change = false
+    const note = await Note.findById(req.params.id).lean();
+    reactions = note.reactions;
+    iteration = -1
+    reactions.forEach(element => {
+        iteration += 1
+        if (element.includes(req.user.id)) {
+            change = true
+            index = iteration
+        }
+        else {
+            change = false
+        }
+    });
+    if (change) {
+        if (reactions[iteration].includes("angry")) {
+            reactions.splice(iteration, 1)
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        } else {
+            reactions[iteration] = [req.user.id, "angry"]
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        }
+    } else {
+        reactions.push([req.user.id, "angry"]);
+        await Note.findByIdAndUpdate(req.params.id, { reactions });
+        res.redirect('/anecdotas/' + req.params.id);
+    }
+}
+
+notesCtrl.funny = async (req, res) => {
+    change = false
+    const note = await Note.findById(req.params.id).lean();
+    reactions = note.reactions;
+    iteration = -1
+    reactions.forEach(element => {
+        iteration += 1
+        if (element.includes(req.user.id)) {
+            change = true
+            index = iteration
+        }
+        else {
+            change = false
+        }
+    });
+    if (change) {
+        if (reactions[iteration].includes("funny")) {
+            reactions.splice(iteration, 1)
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        } else {
+            reactions[iteration] = [req.user.id, "funny"]
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        }
+    } else {
+        reactions.push([req.user.id, "funny"]);
+        await Note.findByIdAndUpdate(req.params.id, { reactions });
+        res.redirect('/anecdotas/' + req.params.id);
+    }
+}
+
+notesCtrl.sad = async (req, res) => {
+    change = false
+    const note = await Note.findById(req.params.id).lean();
+    reactions = note.reactions;
+    iteration = -1
+    reactions.forEach(element => {
+        iteration += 1
+        if (element.includes(req.user.id)) {
+            change = true
+            index = iteration
+        }
+        else {
+            change = false
+        }
+    });
+    if (change) {
+        if (reactions[iteration].includes("sad")) {
+            reactions.splice(iteration, 1)
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        } else {
+            reactions[iteration] = [req.user.id, "sad"]
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        }
+    } else {
+        reactions.push([req.user.id, "sad"]);
+        await Note.findByIdAndUpdate(req.params.id, { reactions });
+        res.redirect('/anecdotas/' + req.params.id);
+    }
+}
+
+notesCtrl.love = async (req, res) => {
+    change = false
+    const note = await Note.findById(req.params.id).lean();
+    reactions = note.reactions;
+    iteration = -1
+    reactions.forEach(element => {
+        iteration += 1
+        if (element.includes(req.user.id)) {
+            change = true
+            index = iteration
+        }
+        else {
+            change = false
+        }
+    });
+    if (change) {
+        if (reactions[iteration].includes("love")) {
+            reactions.splice(iteration, 1)
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        } else {
+            reactions[iteration] = [req.user.id, "love"]
+            await Note.findByIdAndUpdate(req.params.id, { reactions });
+            res.redirect('/anecdotas/' + req.params.id);
+        }
+    } else {
+        reactions.push([req.user.id, "love"]);
+        await Note.findByIdAndUpdate(req.params.id, { reactions });
+        res.redirect('/anecdotas/' + req.params.id);
+    }
 }
 
 // Search

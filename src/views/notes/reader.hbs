@@ -5,11 +5,11 @@
     <div class="card w-100">
         <div class="row no-gutters">
             <div class="col-md-3">
-                <img src="/user/img/{{note.userimg}}" class="card-img h-100" alt="...">
+                <img src="/user/img/{{note.userimg}}" class="card-img h-100" alt="Foto de pérfil (no encontrada)." title="La foto de pérfil de {{note.username}}">
             </div>
             <div class="col-md-8">
                 <div class="card-body text-center">
-                    <h2 class="card-title">Anécdota de @{{note.username}}</h2>
+                    <h2 class="card-title">Anécdota de <span class="font-weight-bold">@{{note.username}}</span></h2>
                     <p class="card-text"><small class="text-muted">Públicado el {{joined}}</small><br><small class="text-muted">Ultima edición el {{updated}}</small></p>
                 </div>
             </div>
@@ -22,31 +22,31 @@
 <div class="mb-5 d-flex justify-content-center">
     <a href="/like/{{note._id}}">
         <button type="button" class="btn btn-secondary mx-1 rounded">
-            <h1><i class="fas text-success fa-smile-wink"></i></h1>{{likes}}
+            <h1><i class="fas text-white fa-smile-wink"></i></h1>{{likes}}
         </button>
     </a>
 
     <a href="/angry/{{note._id}}">
         <button type="button" class="btn btn-secondary mx-1 rounded">
-            <h1><i class="fas text-danger fa-angry"></i></h1>{{angries}}
+            <h1><i class="fas text-red fa-angry"></i></h1>{{angries}}
         </button>
     </a>
 
     <a href="/funny/{{note._id}}">
         <button type="button" class="btn btn-secondary mx-1 rounded">
-            <h1><i class="fas text-warning fa-grin-squint"></i></h1>{{funnies}}
+            <h1><i class="fas text-yellow fa-grin-squint"></i></h1>{{funnies}}
         </button>
     </a>
 
     <a href="/sad/{{note._id}}">
         <button type="button" class="btn btn-secondary mx-1 rounded">
-            <h1><i class="fas text-primary fa-sad-tear"></i></h1>{{sadness}}
+            <h1><i class="fas text-sky fa-sad-tear"></i></h1>{{sadness}}
         </button>
     </a>
 
     <a href="/love/{{note._id}}">
         <button type="button" class="btn btn-secondary mx-1 rounded">
-            <h1><i class="fas text-info fa-grin-hearts"></i></h1>{{lovely}}
+            <h1><i class="fas text-pink fa-grin-hearts"></i></h1>{{lovely}}
         </button>
     </a>
 </div>
@@ -56,9 +56,9 @@
 <div class="row">
     <div class="card w-100">
             <div class="card-body text-center">
-                <h2>{{note.title}}</a></h2>
+                <h2 class="font-weight-bold">{{note.title}}</a></h2>
             </div>
-        <img src="/user/img/{{note.imageid}}" class="card-img-top" alt="...">
+        <img src="/user/img/{{note.imageid}}" class="card-img-top" alt="<- Imagén de la anécdota no encontrada :(" title="Imágen de la anécdota.">
         <div class="card-body">
             
             <p class="card-text">
@@ -68,4 +68,51 @@
     </div>
 </div>
 
+<!-- REPORT SECTION -->
 
+<div class="row">
+    <div class="card mt-5 w-100 text-center">
+        <div class="card-header">
+            ¿Hay algo malo con esta anécdota?
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Reporte rápido</h5>
+            <p class="card-text">En anécdotario nos aseguramos de mantener el contenido bajo las <a href="#"> normas de uso</a>.</p>
+
+            <!-- MODAL -->
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+                data-whatever="@getbootstrap"><i class="fas fa-exclamation-triangle"></i> Realizar un reporte</button>
+            
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-exclamation-triangle"></i> Reporte</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>Muchas gracias por tú cooperación.</h5>
+                            <hr>
+                            <form>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Motivo del reporte:</label>
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
+                            </form>
+                            El reporte será investigado lo más pronto posible.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-warning">Enviar reporte</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -1,3 +1,12 @@
+
+/* GENERAL STYLES */
+
+body {
+  background-color:#ECF0F1;
+}
+
+
+/* ANECDOTAS CARDS TEXT */
 .overflow {
   overflow: hidden;
   display: -webkit-box;
@@ -12,10 +21,6 @@
   max-width: 200px;
 }
 
-body {
-  background-color:#ECF0F1;
-}
-
 .anec {
   color: #2C3E50;
   
@@ -27,7 +32,8 @@ body {
   text-decoration:none;
 }
 
-/* ADITIONAL styles */
+
+/* Text-select color */
 
 ::-moz-selection { /* Code for Firefox */
   color: #FFF;
@@ -45,10 +51,34 @@ body {
   padding:20px;
 }
 
+/* Principal container (footer position) */
+
 .principal {
   min-height: 87vh;
 }
 
+/* User search box styles */
+
 .proper {
   border-left:none;
+}
+
+/* Reactionsbar colors */
+.text-white {
+  color:snow;
+}
+.text-pink {
+  color:rgb(255, 170, 199);
+}
+
+.text-red {
+  color:rgb(255, 68, 68);
+}
+
+.text-yellow {
+  color:rgb(255, 255, 115);
+}
+
+.text-sky {
+  color:rgb(91, 207, 207);
 }

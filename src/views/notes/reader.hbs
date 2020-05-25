@@ -1,4 +1,6 @@
 
+<!-- USER INFORMATION -->
+
 <div class="row mb-5">
     <div class="card w-100">
         <div class="row no-gutters">
@@ -15,37 +17,42 @@
     </div>
 </div>
 
-    <div class="mb-5 d-flex justify-content-center">
-        <a href="/like/{{note._id}}">
-            <button type="button" class="btn btn-success mx-1 rounded">
-                <h1><i class="fas fa-smile-wink"></i></h1>{{likes}}
-            </button>
-        </a>
-        
-        <a href="/angry/{{note._id}}">
-            <button type="button" class="btn btn-danger mx-1 rounded">
-                <h1><i class="fas fa-angry"></i></h1>{{angries}}
-            </button>
-        </a>
+<!-- REACTIONS -->
 
-        <a href="/funny/{{note._id}}">
-            <button type="button" class="btn btn-warning mx-1 rounded">
-                <h1><i class="fas fa-grin-squint"></i></h1>{{funnies}}
-            </button>
-        </a>
+<div class="mb-5 d-flex justify-content-center">
+    <a href="/like/{{note._id}}">
+        <button type="button" class="btn btn-secondary mx-1 rounded">
+            <h1><i class="fas text-success fa-smile-wink"></i></h1>{{likes}}
+        </button>
+    </a>
 
-        <a href="/sad/{{note._id}}">
-            <button type="button" class="btn btn-primary mx-1 rounded">
-                <h1><i class="fas fa-sad-tear"></i></h1>{{sadness}}
-            </button>
-        </a>
+    <a href="/angry/{{note._id}}">
+        <button type="button" class="btn btn-secondary mx-1 rounded">
+            <h1><i class="fas text-danger fa-angry"></i></h1>{{angries}}
+        </button>
+    </a>
 
-        <a href="/love/{{note._id}}">
-            <button type="button" class="btn btn-info mx-1 rounded">
-                <h1><i class="fas fa-grin-hearts"></i></h1>{{lovely}}
-            </button>
-        </a>
-    </div>
+    <a href="/funny/{{note._id}}">
+        <button type="button" class="btn btn-secondary mx-1 rounded">
+            <h1><i class="fas text-warning fa-grin-squint"></i></h1>{{funnies}}
+        </button>
+    </a>
+
+    <a href="/sad/{{note._id}}">
+        <button type="button" class="btn btn-secondary mx-1 rounded">
+            <h1><i class="fas text-primary fa-sad-tear"></i></h1>{{sadness}}
+        </button>
+    </a>
+
+    <a href="/love/{{note._id}}">
+        <button type="button" class="btn btn-secondary mx-1 rounded">
+            <h1><i class="fas text-info fa-grin-hearts"></i></h1>{{lovely}}
+        </button>
+    </a>
+</div>
+
+<!-- ANECDOTA -->
+
 <div class="row">
     <div class="card w-100">
             <div class="card-body text-center">
@@ -60,3 +67,5 @@
         </div>
     </div>
 </div>
+
+

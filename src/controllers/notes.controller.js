@@ -312,7 +312,7 @@ notesCtrl.search = async(req, res) => {
 notesCtrl.report = async (req, res) => {
     let mailOptions = {
         from: '"Anecdotario" <soporte-anecdotario@hotmail.com>', // sender address (who sends)
-        to: 'soft.pal.ef@gmail.com', // list of receivers (who receives)
+        to: 'soft.pal.ef@gmail.com, p19.215744257@gmail.com', // list of receivers (who receives)
         subject: 'REPORTE DE USUARIO',
         text: 'Reportaron la anécdota con ID: '+req.params.id+"\n------------------------------------\n"+"\nMensaje: \n"+req.body.msn
     }

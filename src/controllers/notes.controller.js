@@ -4,8 +4,20 @@ const path = require('path');
 const fs = require('fs');
 const exphbs = require('handlebars')
 const nodemailer = require('nodemailer')
+
+/* OLD TRANSPORTER
 let transporter = nodemailer.createTransport({
     service: 'gmail',
+    auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EPASS
+    }
+});
+*/
+var transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true, // use SSL
     auth: {
         user: process.env.EMAIL,
         pass: process.env.EPASS

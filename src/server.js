@@ -8,7 +8,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const uuid = require('uuid');
-
+var bodyParser = require('body-parser');
 
 // Initializations
 const storage = multer.diskStorage({
@@ -46,6 +46,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
 app.use(multer({
     storage,
     dest: path.join(__dirname, 'public/user/img'),

@@ -1,3 +1,4 @@
+<!-- USERTOP INFORMATION -->
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-3">
@@ -13,22 +14,22 @@
     </div>
 </div>
 
+<!-- NAVIGATION TAB -->
 <div class="card text-center">
     <nav class="m-3">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-                aria-controls="nav-home" aria-selected="true">Anecdotas</a>
+                aria-controls="nav-home" aria-selected="true">Anécdotas</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                aria-controls="nav-profile" aria-selected="false">Perfil</a>
+                aria-controls="nav-profile" aria-selected="false">Pérfil</a>
         </div>
     </nav>
     <div class="card-body">
         <div class="tab-content" id="nav-tabContent">
+            <!-- USER ANECDOTAS -->
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="row row-cols-1 row-cols-md-3">
-                    
                     {{#each notes}}
-                    
                     <div class="col mb-4">
                         <div class="card">
                             <img src="/user/img/{{imageid}}" class="card-img-top" alt="...">
@@ -47,12 +48,15 @@
                             </div>
                         </div>
                     </div>
-                    
                     {{/each}}
                 </div>
             </div>
+            <!-- USER PROFILE INFORMATION -->
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                 <h1>{{user}}</h1>
+                <hr>
+                <p>¡{{reacts}} personas han reaccionado a tus Anécdotas!</p>
+                <h1 class="fab fa-optin-monster"></h1>
             </div>
     </div>
 </div>

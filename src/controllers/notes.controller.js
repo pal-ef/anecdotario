@@ -59,12 +59,18 @@ notesCtrl.renderNotes = async (req, res) => {
 
 notesCtrl.renderUserNotes = async (req, res) => {
     const notes = await Note.find({ user: req.user.id }).lean().sort({ createdAt: 'desc' });
+    reacts = 0
+    notes.forEach(element => {
+        element.reactions.forEach(element => {
+            reacts += 1
+        });
+    });
     const pic = req.user.profilepic;
     const user = req.user.name;
     const description = req.user.description;
     const ajoined = req.user.createdAt;
     const joined = ajoined.getDate() + "/" + (ajoined.getMonth()+1)+ "/" + ajoined.getFullYear();
-    res.render('notes/user-notes', { notes, user, joined, pic, description });
+    res.render('notes/user-notes', { notes, user, joined, pic, description, reacts });
 };
 
 notesCtrl.renderReader = async (req, res) => {

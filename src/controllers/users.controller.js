@@ -63,4 +63,8 @@ usersCtrl.logout = (req, res) => {
     res.redirect('/usuario/acceder');
 };
 
+usersCtrl.normas = (req, res) => {
+    res.render('users/normas');
+}
+
 module.exports = usersCtrl;

@@ -94,6 +94,8 @@ app.use((error, req, res, next) => {
     if (error.status == 404){
         req.flash('error', 'La página que buscas no existe.')
         res.redirect('/')
+    }else if (error.status == 413){
+        res.redirect('/')
     } else {
         req.flash('error', 'la imagen tiene que ser menor a 5MB y de formato JPG, PNG o GIF')
         res.redirect('/anecdotas/nueva')

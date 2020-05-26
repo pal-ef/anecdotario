@@ -81,4 +81,25 @@ app.use(require('./routes/users.routes'));
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ERROR HANDLING
+app.use((req, res, next) => {
+    const error = new Error('Not found');
+    error.status = 404
+    next(error)
+})
+
+app.use((error, req, res, next) => {
+    console.log(error.status)
+    res.status(error.status || 500)
+    if (error.status == 404){
+        req.flash('error', 'La página que buscas no existe.')
+        res.redirect('/')
+    } else {
+        req.flash('error', 'la imagen tiene que ser menor a 5MB y de formato JPG, PNG o GIF')
+        res.redirect('/anecdotas/nueva')
+    }
+})
+
+
+
 module.exports = app;

@@ -8,7 +8,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const uuid = require('uuid');
-var bodyParser = require('body-parser');
+
 
 // Initializations
 const storage = multer.diskStorage({
@@ -19,7 +19,9 @@ const storage = multer.diskStorage({
 });
 const app = express();
 require('./config/passport');
-
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({ limit: '4mb' }));
+app.use(bodyParser.urlencoded({ limit: '4mb', extended: true }));
 
 // Settings
 app.set('port', process.env.PORT || 5000);
@@ -35,6 +37,7 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // Middlewares
+
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended:false}));
 app.use(methodOverride('_method'));
@@ -43,17 +46,16 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
-app.use(bodyParser.json({ limit: '5mb' }));
-app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
 app.use(multer({
     storage,
     dest: path.join(__dirname, 'public/user/img'),
     limits: {
-        fileSize: 5000000
+        fileSize: 4000000
     },
     fileFilter: (req, file, cb) => {
         const filetypes = /jpeg|jpg|png|gif/;
@@ -85,6 +87,8 @@ app.use(require('./routes/users.routes'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ERROR HANDLING
+
+
 app.use((req, res, next) => {
     const error = new Error('Not found');
     error.status = 404

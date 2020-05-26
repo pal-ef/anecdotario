@@ -92,7 +92,7 @@ app.use((req, res, next) => {
 })
 
 app.use((error, req, res, next) => {
-    console.log(error.status)
+    console.log(error)
     res.status(error.status || 500)
     if (error.status == 404){
         req.flash('error', 'La página que buscas no existe.')
